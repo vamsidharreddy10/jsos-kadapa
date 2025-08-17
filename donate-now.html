@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Our Cause | Animated Donation Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="donation-container">
+        <div class="hero animate__animated animate__fadeIn">
+            <h1>Support Our Mission</h1>
+            <p>Your donation helps us make a difference in the world</p>
+            <div class="progress-container">
+                <div class="progress-bar animate__animated animate__slideInLeft">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="amountRaised">$12,540</span> raised of <span id="targetAmount">$50,000</span> goal
+                </div>
+            </div>
+        </div>
+
+        <div class="donation-options animate__animated animate__fadeInUp">
+            <h2>Choose Your Donation Amount</h2>
+            <div class="amount-options">
+                <button class="amount-option" data-amount="10">$10</button>
+                <button class="amount-option" data-amount="25">$25</button>
+                <button class="amount-option active" data-amount="50">$50</button>
+                <button class="amount-option" data-amount="100">$100</button>
+                <button class="amount-option" data-amount="250">$250</button>
+                <button class="amount-option" data-amount="500">$500</button>
+            </div>
+            <div class="custom-amount">
+                <label for="customAmount">Or enter a custom amount:</label>
+                <div class="input-group">
+                    <span></span>
+                    <input type="number" id="customAmount" placeholder="Other amount">
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-method animate__animated animate__fadeIn">
+            <h2>Payment Method</h2>
+            <div class="payment-options">
+                <div class="payment-option active" id="creditCard">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Credit Card</span>
+                </div>
+                <div class="payment-option" id="paypal">
+                    <i class="fab fa-cc-paypal"></i>
+                    <span>PayPal</span>
+                </div>
+                <div class="payment-option" id="bankTransfer">
+                    <i class="fas fa-university"></i>
+                    <span>Bank Transfer</span>
+                </div>
+            </div>
+
+            <div class="payment-form" id="creditCardForm">
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date</label>
+                        <input type="text" id="expiryDate" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nameOnCard">Name on Card</label>
+                    <input type="text" id="nameOnCard" placeholder="John Doe">
+                </div>
+            </div>
+
+            <div class="payment-form hidden" id="paypalForm">
+                <p>You will be redirected to PayPal to complete your donation.</p>
+                <button class="paypal-button">
+                    <i class="fab fa-paypal"></i> Continue with PayPal
+                </button>
+            </div>
+
+            <div class="payment-form hidden" id="bankTransferForm">
+                <p>Please use the following bank details for your transfer:</p>
+                <div class="bank-details">
+                    <p><strong>Account Name:</strong> Charity Organization</p>
+                    <p><strong>Account Number:</strong> 123456789</p>
+                    <p><strong>Bank Name:</strong> Global Bank</p>
+                    <p><strong>SWIFT/BIC:</strong> GLBBNK123</p>
+                    <p><strong>Reference:</strong> DONATION-[Your Name]</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="donor-info animate__animated animate__fadeIn">
+            <h2>Your Information</h2>
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="john@example.com">
+            </div>
+            <div class="form-group checkbox">
+                <input type="checkbox" id="subscribeNewsletter" checked>
+                <label for="subscribeNewsletter">Subscribe to our newsletter</label>
+            </div>
+            <div class="form-group checkbox">
+                <input type="checkbox" id="anonymousDonation">
+                <label for="anonymousDonation">Make this donation anonymous</label>
+            </div>
+        </div>
+
+        <div class="donate-button-container animate__animated animate__fadeIn">
+            <button id="donateButton" class="pulse">
+                <i class="fas fa-heart"></i> Donate Now
+            </button>
+        </div>
+
+        <div class="thank-you-message hidden" id="thankYouMessage">
+            <div class="checkmark animate__animated animate__bounceIn">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Thank You for Your Generosity!</h2>
+            <p>Your donation will help us make a real difference. A receipt has been sent to your email.</p>
+            <button id="shareButton">
+                <i class="fas fa-share-alt"></i> Share Your Support
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+<style>
+  :root {
+    --primary-color: #4a6bff;
+    --secondary-color: #6c5ce7;
+    --accent-color: #00cec9;
+    --text-color: #2d3436;
+    --light-text: #636e72;
+    --background-color: #f5f6fa;
+    --white: #ffffff;
+    --success-color: #00b894;
+    --error-color: #d63031;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.donation-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 30px;
+    position: relative;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: var(--light-text);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.progress-container {
+    margin: 30px 0;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 25%;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    border-radius: 10px;
+    position: relative;
+    transition: width 1s ease-in-out;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.8) 100%
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+#amountRaised {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.donation-options, .payment-method, .donor-info {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: rgba(245, 246, 250, 0.5);
+    border-radius: 10px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.amount-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .amount-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.amount-option {
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.amount-option:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(74, 107, 255, 0.2);
+}
+
+.amount-option.active {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.05);
+}
+
+.custom-amount {
+    margin-top: 20px;
+}
+
+.custom-amount label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.input-group:focus-within {
+    border-color: var(--primary-color);
+}
+
+.input-group span {
+    padding: 0 15px;
+    background-color: #f0f0f0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.payment-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.payment-option {
+    flex: 1;
+    min-width: 120px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-option i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--light-text);
+}
+
+.payment-option:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(74, 107, 255, 0.2);
+}
+
+.payment-option.active {
+    border-color: var(--primary-color);
+    background-color: rgba(74, 107, 255, 0.1);
+}
+
+.payment-option.active i {
+    color: var(--primary-color);
+}
+
+#creditCard.active i {
+    color: #3a5bc7;
+}
+
+#paypal.active i {
+    color: #003087;
+}
+
+#bankTransfer.active i {
+    color: #5d38a1;
+}
+
+.payment-form {
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s ease;
+}
+
+.payment-form.hidden {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox input {
+    width: auto;
+}
+
+.paypal-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #003087;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.paypal-button:hover {
+    background-color: #002366;
+}
+
+.bank-details p {
+    margin-bottom: 10px;
+}
+
+.bank-details strong {
+    color: var(--primary-color);
+}
+
+.donate-button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#donateButton {
+    padding: 18px 40px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(74, 107, 255, 0.3);
+}
+
+#donateButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(74, 107, 255, 0.4);
+}
+
+#donateButton:active {
+    transform: translateY(1px);
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 10px 20px rgba(74, 107, 255, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 15px 30px rgba(74, 107, 255, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 10px 20px rgba(74, 107, 255, 0.3); }
+}
+
+.thank-you-message {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: rgba(0, 184, 148, 0.1);
+    border-radius: 15px;
+    margin-top: 30px;
+    display: none;
+}
+
+.thank-you-message h2 {
+    color: var(--success-color);
+    margin: 20px 0;
+}
+
+.checkmark i {
+    font-size: 5rem;
+    color: var(--success-color);
+}
+
+#shareButton {
+    padding: 12px 25px;
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+#shareButton:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .donation-container {
+        padding: 20px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .payment-options {
+        flex-direction: column;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Animation for progress bar fill
+    gsap.to("#progressFill", {
+        width: "75%",
+        duration: 2,
+        ease: "power2.out",
+        delay: 0.5
+    });
+
+    // Amount selection
+    const amountOptions = document.querySelectorAll('.amount-option');
+    const customAmountInput = document.getElementById('customAmount');
+    
+    amountOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remove active class from all options
+            amountOptions.forEach(opt => opt.classList.remove('active'));
+            
+            // Add active class to clicked option
+            this.classList.add('active');
+            
+            // Clear custom amount if any
+            customAmountInput.value = '';
+            
+            // Animate the selection
+            gsap.to(this, {
+                scale: 1.05,
+                duration: 0.2,
+                yoyo: true,
+                repeat: 1
+            });
+        });
+    });
+    
+    // When custom amount is entered, deselect all amount options
+    customAmountInput.addEventListener('input', function() {
+        amountOptions.forEach(opt => opt.classList.remove('active'));
+    });
+
+    // Payment method selection
+    const paymentOptions = document.querySelectorAll('.payment-option');
+    const paymentForms = {
+        creditCard: document.getElementById('creditCardForm'),
+        paypal: document.getElementById('paypalForm'),
+        bankTransfer: document.getElementById('bankTransferForm')
+    };
+    
+    paymentOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remove active class from all options
+            paymentOptions.forEach(opt => opt.classList.remove('active'));
+            
+            // Add active class to clicked option
+            this.classList.add('active');
+            
+            // Hide all forms
+            Object.values(paymentForms).forEach(form => form.classList.add('hidden'));
+            
+            // Show the selected form with animation
+            const formId = this.id + 'Form';
+            if (paymentForms[this.id]) {
+                paymentForms[this.id].classList.remove('hidden');
+                gsap.from(paymentForms[this.id], {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.5
+                });
+            }
+        });
+    });
+
+    // Donate button click handler
+    const donateButton = document.getElementById('donateButton');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+    
+    donateButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Validate form
+        const selectedAmount = document.querySelector('.amount-option.active')?.dataset.amount || customAmountInput.value;
+        if (!selectedAmount) {
+            showError('Please select or enter a donation amount');
+            return;
+        }
+        
+        // Get payment method
+        const paymentMethod = document.querySelector('.payment-option.active')?.id;
+        if (!paymentMethod) {
+            showError('Please select a payment method');
+            return;
+        }
+        
+        // Validate credit card if selected
+        if (paymentMethod === 'creditCard') {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+            const nameOnCard = document.getElementById('nameOnCard').value;
+            
+            if (!cardNumber || !expiryDate || !cvv || !nameOnCard) {
+                showError('Please fill in all credit card details');
+                return;
+            }
+        }
+        
+        // Get donor info
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        
+        if (!fullName || !email) {
+            showError('Please fill in your name and email');
+            return;
+        }
+        
+        // Show loading state
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        this.classList.remove('pulse');
+        
+        // Simulate processing delay
+        setTimeout(() => {
+            // Hide form and show thank you message
+            document.querySelector('.donation-container').style.height = document.querySelector('.donation-container').offsetHeight + 'px';
+            document.querySelectorAll('.hero, .donation-options, .payment-method, .donor-info, .donate-button-container').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            thankYouMessage.classList.remove('hidden');
+            thankYouMessage.style.display = 'block';
+            
+            // Animate thank you message appearance
+            gsap.from(thankYouMessage, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: "back.out(1.7)"
+            });
+            
+            // Update progress bar with new donation
+            const currentAmount = parseInt(document.getElementById('amountRaised').textContent.replace('$', '').replace(',', ''));
+            const newAmount = currentAmount + parseInt(selectedAmount);
+            document.getElementById('amountRaised').textContent = '$' + newAmount.toLocaleString();
+            
+            gsap.to("#progressFill", {
+                width: `${Math.min(100, (newAmount / 50000) * 100)}%`,
+                duration: 1.5,
+                ease: "elastic.out(1, 0.5)"
+            });
+            
+            // Confetti effect
+            createConfetti();
+        }, 2000);
+    });
+    
+    // Share button
+    const shareButton = document.getElementById('shareButton');
+    shareButton.addEventListener('click', function() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'I just donated to a great cause!',
+                text: 'Join me in supporting this important mission.',
+                url: window.location.href
+            }).catch(err => {
+                console.log('Error sharing:', err);
+            });
+        } else {
+            // Fallback for browsers that don't support Web Share API
+            alert('Share this page with your friends!');
+        }
+    });
+    
+    // Helper function to show error messages
+    function showError(message) {
+        const errorElement = document.createElement('div');
+        errorElement.className = 'error-message';
+        errorElement.textContent = message;
+        errorElement.style.color = 'white';
+        errorElement.style.backgroundColor = 'var(--error-color)';
+        errorElement.style.padding = '15px';
+        errorElement.style.borderRadius = '8px';
+        errorElement.style.marginBottom = '20px';
+        errorElement.style.textAlign = 'center';
+        errorElement.style.animation = 'shake 0.5s';
+        
+        const existingError = document.querySelector('.error-message');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        donateButton.parentNode.insertBefore(errorElement, donateButton);
+        
+        setTimeout(() => {
+            errorElement.style.animation = 'none';
+        }, 500);
+        
+        // Scroll to error
+        errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    // Confetti effect
+    function createConfetti() {
+        const colors = ['#4a6bff', '#6c5ce7', '#00cec9', '#00b894', '#fdcb6e', '#e17055'];
+        
+        for (let i = 0; i < 150; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.width = `${Math.random() * 10 + 5}px`;
+            confetti.style.height = `${Math.random() * 10 + 5}px`;
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.position = 'absolute';
+            confetti.style.left = `${Math.random() * 100}%`;
+            confetti.style.top = '-10px';
+            confetti.style.borderRadius = '50%';
+            confetti.style.opacity = Math.random() + 0.2;
+            confetti.style.zIndex = '1000';
+            
+            document.querySelector('.donation-container').appendChild(confetti);
+            
+            const animationDuration = Math.random() * 3 + 2;
+            
+            gsap.to(confetti, {
+                y: window.innerHeight + 10,
+                x: `${(Math.random() - 0.5) * 200}px`,
+                rotation: Math.random() * 360,
+                duration: animationDuration,
+                ease: 'power1.out',
+                onComplete: () => {
+                    confetti.remove();
+                }
+            });
+        }
+    }
+    
+    // Add shake animation to CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+    `;
+    document.head.appendChild(style);
+});
+</script>

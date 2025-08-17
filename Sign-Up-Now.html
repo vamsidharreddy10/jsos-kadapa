@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
+    <div class="signup-container">
+        <h2>Sign Up Now</h2>
+        <form>
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="#">Login</a></p>
+    </div>
+
+</body>
+
+</html>
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(270deg, #6a11cb, #2575fc);
+    background-size: 400% 400%;
+    animation: gradientBG 8s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating Shapes */
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.floating-shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    animation: float 10s infinite ease-in-out;
+}
+
+.floating-shape:nth-child(1) {
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    left: 20%;
+}
+.floating-shape:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: 60%;
+}
+.floating-shape:nth-child(3) {
+    width: 80px;
+    height: 80px;
+    top: 80%;
+    left: 30%;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Signup Form */
+.signup-container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 1.5s ease;
+}
+
+.signup-container h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.signup-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.signup-container input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.signup-container input:focus {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 10px rgba(255,255,255,0.7);
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #ff512f, #dd2476);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signup-container button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255,255,255,0.5);
+}
+
+.signup-container p {
+    color: white;
+    margin-top: 15px;
+}
+
+.signup-container a {
+    color: #ffdfba;
+    text-decoration: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+</style>

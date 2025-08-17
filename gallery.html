@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | JSOS Organization</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">JSOS</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="get-involved.html">Get Involved</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="container">
+            <h1>JSOS Photo Gallery</h1>
+            <p>Visual stories of our impact and community work</p>
+        </div>
+    </section>
+    
+    <!-- Gallery Filters -->
+    <section class="gallery-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="btn filter-btn active" data-filter="all">All Photos</button>
+                <button class="btn filter-btn" data-filter="education">Education</button>
+                <button class="btn filter-btn" data-filter="health">Health</button>
+                <button class="btn filter-btn" data-filter="community">Community</button>
+                <button class="btn filter-btn" data-filter="events">Events</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Gallery -->
+    <section class="main-gallery">
+        <div class="container">
+            <div class="gallery-grid">
+                <!-- Education Category -->
+                <div class="gallery-item" data-category="education">
+                    <img src="images/gallery/education1.jpg" alt="Children learning at JSOS center">
+                    <div class="caption">
+                        <h3>Classroom Learning</h3>
+                        <p>Students engaged in our after-school program</p>
+                        <div class="photo-date">March 2023</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="education">
+                    <img src="images/gallery/education2.jpg" alt="School supplies distribution">
+                    <div class="caption">
+                        <h3>Supply Distribution</h3>
+                        <p>Providing materials to rural schools</p>
+                        <div class="photo-date">January 2023</div>
+                    </div>
+                </div>
+
+                <!-- Health Category -->
+                <div class="gallery-item" data-category="health">
+                    <img src="images/gallery/health1.jpg" alt="Medical camp">
+                    <div class="caption">
+                        <h3>Medical Camp</h3>
+                        <p>Free health checkups in Kadapa district</p>
+                        <div class="photo-date">August 2023</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="health">
+                    <img src="images/gallery/health2.jpg" alt="Vaccination drive">
+                    <div class="caption">
+                        <h3>Vaccination Drive</h3>
+                        <p>Partnering with local health authorities</p>
+                        <div class="photo-date">May 2023</div>
+                    </div>
+                </div>
+
+                <!-- Community Category -->
+                <div class="gallery-item" data-category="community">
+                    <img src="images/gallery/community1.jpg" alt="Women's empowerment">
+                    <div class="caption">
+                        <h3>Women's Workshop</h3>
+                        <p>Skill development training sessions</p>
+                        <div class="photo-date">July 2023</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="community">
+                    <img src="images/gallery/community2.jpg" alt="Elderly care">
+                    <div class="caption">
+                        <h3>Senior Support</h3>
+                        <p>Weekly visits to isolated elders</p>
+                        <div class="photo-date">April 2023</div>
+                    </div>
+                </div>
+
+                <!-- Events Category -->
+                <div class="gallery-item" data-category="events">
+                    <img src="images/gallery/event1.jpg" alt="Annual fundraiser">
+                    <div class="caption">
+                        <h3>Annual Gala</h3>
+                        <p>2023 fundraising dinner event</p>
+                        <div class="photo-date">November 2023</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <img src="images/gallery/event2.jpg" alt="Volunteer appreciation">
+                    <div class="caption">
+                        <h3>Volunteer Day</h3>
+                        <p>Celebrating our dedicated volunteers</p>
+                        <div class="photo-date">December 2023</div>
+                    </div>
+                </div>
+
+                <!-- Additional Photos -->
+                <div class="gallery-item" data-category="education">
+                    <img src="images/gallery/education3.jpg" alt="Computer class">
+                    <div class="caption">
+                        <h3>Digital Literacy</h3>
+                        <p>Teaching essential computer skills</p>
+                        <div class="photo-date">September 2023</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="health">
+                    <img src="images/gallery/health3.jpg" alt="Nutrition program">
+                    <div class="caption">
+                        <h3>Nutrition Program</h3>
+                        <p>Weekly meal service for children</p>
+                        <div class="photo-date">June 2023</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="community">
+                    <img src="images/gallery/community3.jpg" alt="Disability support">
+                    <div class="caption">
+                        <h3>Inclusive Support</h3>
+                        <p>Assistive devices distribution</p>
+                        <div class="photo-date">February 2023</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <img src="images/gallery/event3.jpg" alt="Awareness march">
+                    <div class="caption">
+                        <h3>Community March</h3>
+                        <p>Raising awareness about education rights</p>
+                        <div class="photo-date">October 2023</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-cta">
+                <p>Have photos to share from our events?</p>
+                <a href="contact.html" class="btn">Submit Your Photos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 JSOS Organization. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img class="modal-img" src="" alt="">
+            <div class="modal-caption">
+                <h3 class="modal-title"></h3>
+                <p class="modal-description"></p>
+                <p class="modal-date"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<style>
+    footer
+    {
+        background-color: #222;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+    }
+    footer .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    footer p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+    footer .footer-links {
+        margin-top: 10px;
+    }
+    footer .footer-links a {
+        color: #ffcc00;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+    .submit-btn {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+    }   
+
+
+:root {
+    --primary-color: #3f64ca;
+    --secondary-color: #ffcc00;
+    --light-color: #f9f9f9;
+    --text-color: #333;
+    --dark-color: #222;
+    --font-family: 'Arial', sans-serif;
+}
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--light-color);
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.title {
+    display: none;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 20px 0;
+    text-align: center;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.title {
+    display: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .top {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 70px;
+        background-color: var(--primary-color);
+        z-index: 1000;
+    }
+    .top .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+    .top .logo {
+        font-size: 1.8rem;
+        color: white;
+        text-decoration: none;
+    }
+    /* Gallery Page Specific Styles */
+
+/* Gallery Hero */
+.gallery-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('../images/gallery/gallery-hero.jpg') center/cover no-repeat;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    margin-top: 70px; /* Account for fixed navbar */
+}
+
+.gallery-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.gallery-hero p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+    line-height: 1.5;
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    font-style: italic;
+
+}
+
+/* Gallery Filters */
+.gallery-filters {
+    padding: 30px 0;
+    background-color: var(--light-color);
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;    
+    font-family: 'Arial', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.filter-btn {
+    background: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease, color 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    text-align: center;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Main Gallery */
+.main-gallery {
+    padding: 60px 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    aspect-ratio: 4/3;
+
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .caption {
+    transform: translateY(0);
+}
+
+.caption h3 {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.caption p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.photo-date {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.gallery-cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.gallery-cta p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+/* Enhanced Lightbox Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    overflow: auto;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-img {
+    max-width: 90%;
+    max-height: 70vh;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.modal-caption {
+    color: white;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.modal-description, .modal-date {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gallery-hero {
+        height: 40vh;
+    }
+    
+    .gallery-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .caption {
+        transform: translateY(0);
+        background: rgba(0,0,0,0.7);
+    }
+    
+    .modal-img {
+        max-width: 95%;
+        max-height: 60vh;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filter-btn {
+        width: 80%;
+    }
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    z-index: 1000;
+}
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+.navbar .logo {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+}
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.navbar .nav-links li {
+    display: inline;
+}
+.navbar .nav-links a {
+    color: rgb(63, 100, 202);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+.navbar .nav-links a:hover,
+.navbar .nav-links a.active {
+    color: #ffcc00;
+}
+.navbar .hamburger {
+    display: none;
+    cursor: pointer;
+}
+.navbar .hamburger i {
+    color: white;
+    font-size: 1.5rem;
+}
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: var(--primary-color);
+        width: 100%;
+        padding: 20px;
+    }
+    .navbar .nav-links.active {
+        display: flex;
+    }
+    .navbar .hamburger {
+        display: block;
+    }
+}
+.navbar .nav-links li {
+    margin: 10px 0;
+}
+.navbar .nav-links a {
+    font-size: 1.2rem;
+}
+.navbar .nav-links a:hover {
+    color: #ffcc00;
+}
+
+</style>

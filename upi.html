@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated UPI Payment</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<body>
+   <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">JS<span>OS</span></a>
+            <ul class="nav-links">
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="Get-involved.html">Get Involved</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+  <div class="upi-section">
+    <h2>Pay via UPI</h2>
+
+    <!-- UPI Apps -->
+    <div class="upi-apps">
+      <button class="upi-btn" style="background:#4285F4"><i class="fab fa-google-pay"></i> Google Pay</button>
+      <button class="upi-btn" style="background:#5F259F"><i class="fas fa-mobile-alt"></i> PhonePe</button>
+      <button class="upi-btn" style="background:#00B9F1"><i class="fas fa-wallet"></i> Paytm</button>
+    </div>
+
+    <!-- UPI ID Input -->
+    <div class="upi-id-box">
+      <label>Enter UPI ID</label>
+      <input type="text" placeholder="example@upi">
+    </div>
+
+    <!-- QR Code -->
+    <div class="qr-box">
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=example@upi&pn=Merchant&mc=0000&mode=02&purpose=00"
+        alt="UPI QR Code">
+      <p>Scan to Pay</p>
+    </div>
+
+    <!-- Pay Button -->
+    <button class="pay-now">Pay Now</button>
+  </div>
+
+</body>
+
+</html>
+<style>
+  body {
+  background: url("img/upi\ background.jpg") no-repeat center center/cover;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: -webkit-radial-gradient();
+}
+
+.upi-section {
+  background: rgba(255,255,255,0.12);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  width: 320px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.upi-section h2 {
+  margin-bottom: 15px;
+}
+
+.upi-apps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.upi-btn {
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+div{
+  color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.upi-btn i {
+  font-size: 20px;
+}
+
+.upi-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255,255,255,0.3);
+}
+h2 {
+  color: rgb(5, 7, 9);
+  
+}
+
+.upi-id-box {
+  text-align: left;
+  margin-top: 10px;
+  box-shadow: black;
+}
+
+.upi-id-box label {
+  font-size: 14px;
+}
+
+.upi-id-box input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  transition: box-shadow 0.3s ease;
+}
+
+.upi-id-box input:focus {
+  box-shadow: 0 0 10px #00ffcc;
+}
+
+.qr-box {
+  margin: 15px 0;
+}
+
+.qr-box img {
+  border-radius: 8px;
+  animation: float 2s infinite ease-in-out;
+}
+
+.qr-box p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.pay-now {
+  background: linear-gradient(135deg, #00ffcc, #0099ff);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.pay-now:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(0,255,204,0.6);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+</style>

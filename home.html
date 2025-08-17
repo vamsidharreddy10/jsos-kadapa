@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSOS - Empowering Through Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== Global Styles ===== */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 35px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
+        }
+        
+        .btn i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 15px auto 0;
+            color: #666;
+        }
+
+        /* ===== Animated Hero Section ===== */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.8));
+            color: white;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+        
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            max-width: 700px;
+            opacity: 0;
+            transform: translateX(100px);
+            animation: fadeInRight 1s forwards 1s;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-1000px) rotate(720deg); }
+        }
+
+        /* ===== Stats Section ===== */
+        .stats {
+            background: var(--primary);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .stat-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* ===== Programs Section ===== */
+        .programs {
+            background: var(--light);
+        }
+        
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .program-card.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .program-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+        
+        .program-content {
+            padding: 25px;
+        }
+        
+        .program-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .program-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* ===== Stories Section ===== */
+        .stories {
+            position: relative;
+        }
+        
+        .story-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .story-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .story-slider::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .story-slider::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+        
+        .story-card {
+            min-width: 350px;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        .story-card.animate {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .story-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .story-card:hover .story-image img {
+            transform: scale(1.1);
+        }
+        
+        .story-content {
+            padding: 25px;
+        }
+        
+        .story-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .story-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .story-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* ===== CTA Section ===== */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: radial-gradient(var(--secondary) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 992px) {
+            .hero {
+                text-align: center;
+                padding-top: 100px;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .hero-image {
+                position: relative;
+                width: 100%;
+                max-width: 500px;
+                margin: 50px auto 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .stat-number {
+                font-size: 2.8rem;
+            }
+            
+            .story-card {
+                min-width: 280px;
+            }
+        }
+          /* Navigation */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            padding: 10px 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: var(--secondary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">JS<span>OS</span></a>
+            <ul class="nav-links">
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="Get-involved.html">Get Involved</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- Animated Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element" style="width: 100px; height: 100px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="floating-element" style="width: 150px; height: 150px; top: 70%; left: 25%; animation-delay: 2s;"></div>
+            <div class="floating-element" style="width: 80px; height: 80px; top: 40%; left: 80%; animation-delay: 4s;"></div>
+            <div class="floating-element" style="width: 120px; height: 120px; top: 80%; left: 70%; animation-delay: 6s;"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1>Empowering Futures Through Education</h1>
+                <p>JSOS transforms lives by providing quality education and opportunities to underprivileged communities across India.</p>
+                <div class="hero-btns">
+                    <a href="donate-now.html" class="btn">
+                        Donate Now <i class="fas fa-heart"></i>
+                    </a>
+                    <a href="gallery.html" class="btn btn-outline" style="color: white; border-color: white;">
+                        Our Gallery<i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3" alt="Students Learning" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="25000">0</div>
+                    <div class="stat-label">Lives Impacted</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="120">0</div>
+                    <div class="stat-label">Communities Served</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">Volunteers</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-count="18">0</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Programs</h2>
+                <p>We offer comprehensive educational initiatives to empower communities</p>
+            </div>
+            
+            <div class="program-cards">
+                <!-- Program 1 -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3" alt="Education Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Quality Education</h3>
+                        <p>After-school programs, tutoring, and learning centers providing foundational education to underserved children.</p>
+                        <a href="#" class="btn">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3" alt="Tech Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Tech Training</h3>
+                        <p>Coding bootcamps and digital literacy programs to prepare youth for 21st century careers.</p>
+                        <a href="#" class="btn">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3" alt="Scholarship Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Scholarships</h3>
+                        <p>Financial support for promising students to attend secondary school and university.</p>
+                        <a href="#" class="btn">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stories Section -->
+    <section class="stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+                <p>Hear from those whose lives we've transformed</p>
+            </div>
+            
+            <div class="story-slider">
+                <!-- Story 1 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3" alt="Priya's Story">
+                    </div>
+                    <div class="story-content">
+                        <h3>Priya's Journey</h3>
+                        <div class="story-meta">
+                            <span><i class="fas fa-graduation-cap"></i> Medical Student</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Mumbai</span>
+                        </div>
+                        <p>"JSOS helped me become the first doctor from my community. Their support changed everything."</p>
+                        <a href="#" class="btn">
+                            Read Story <i class="fas fa-book-open"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Story 2 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3" alt="Rahul's Story">
+                    </div>
+                    <div class="story-content">
+                        <h3>Rahul's Success</h3>
+                        <div class="story-meta">
+                            <span><i class="fas fa-laptop-code"></i> Software Engineer</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bangalore</span>
+                        </div>
+                        <p>"From repairing phones to writing code - JSOS showed me a new future was possible."</p>
+                        <a href="#" class="btn">
+                            Read Story <i class="fas fa-book-open"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Story 3 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3" alt="Ananya's Story">
+                    </div>
+                    <div class="story-content">
+                        <h3>Ananya's Art</h3>
+                        <div class="story-meta">
+                            <span><i class="fas fa-paint-brush"></i> Professional Artist</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Delhi</span>
+                        </div>
+                        <p>"JSOS helped me discover my creative voice and turn it into a career."</p>
+                        <a href="#" class="btn">
+                            Read Story <i class="fas fa-book-open"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Story 4 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3" alt="Arjun's Story">
+                    </div>
+                    <div class="story-content">
+                        <h3>Arjun's Resilience</h3>
+                        <div class="story-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> Teacher</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Kolkata</span>
+                        </div>
+                        <p>"Now I teach at the same JSOS center that helped me get my education."</p>
+                        <a href="#" class="btn">
+                            Read Story <i class="fas fa-book-open"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-pattern"></div>
+        <div class="container">
+            <h2>Join Our Mission</h2>
+            <p>Together we can create more success stories and transform more lives through education</p>
+            <div class="cta-btns">
+                <a href="donate-now.html" class="btn" style="background: var(--accent); box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);">
+                    Donate Now <i class="fas fa-hand-holding-heart"></i>
+                </a>
+                <a href="Become-a-Volunteer.html" class="btn btn-outline" style="color: white; border-color: white;">
+                    Volunteer <i class="fas fa-hands-helping"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animate elements on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stats counters
+            const statItems = document.querySelectorAll('.stat-item');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        
+                        if (entry.target.querySelector('.stat-number')) {
+                            animateCounters();
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statItems.forEach(item => statsObserver.observe(item));
+            
+            // Animate program cards
+            const programCards = document.querySelectorAll('.program-card');
+            const programsObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                        }, index * 200);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            programCards.forEach(card => programsObserver.observe(card));
+            
+            // Animate story cards
+            const storyCards = document.querySelectorAll('.story-card');
+            const storiesObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                        }, index * 150);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            storyCards.forEach(card => storiesObserver.observe(card));
+            
+            // Counter animation function
+            function animateCounters() {
+                const counters = document.querySelectorAll('.stat-number');
+                const speed = 200;
+                
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animateCounters, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

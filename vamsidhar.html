@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biography Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #000000;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 20px 0 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        /* Timeline */
+        .timeline {
+            width: 90%;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #fff;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            width: 45%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+            position: relative;
+            animation: slideUp 1s ease forwards;
+            opacity: 0;
+        }
+
+        .timeline-item.left {
+            left: 0;
+            transform: translateX(-120%);
+        }
+
+        .timeline-item.right {
+            left: 55%;
+            transform: translateX(120%);
+        }
+
+        .timeline-item.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Achievements */
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item {
+                width: 90%;
+                left: 20px !important;
+            }
+        }
+      
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="img/naniprofil.jpeg" alt="Profile Picture">
+        <h1>D.vamsidhar Reddy</h1>
+        <h3>
+            Web Development
+        </h3>
+        <p>
+            HTML|CSS|JavaScript|Node.js|
+            <br>
+            React.js|Express.js|MongoDB
+        </p>
+        <div class="hero-btns">
+            <a href="show-project.html" class="btn">View Projects</a>
+        </div>
+        <div class="hero-btns">
+            <a href="Contact-me.html" class="btn">Contact Me</a>
+        </div>
+    </section>
+    <!-- Timeline -->
+    <section class="timeline">
+        <div class="timeline-item left">Born in 2005, in Kadapa, Andhra Pradesh.</div>
+        <div class="timeline-item right">Graduated with honors in 2022.</div>
+        <div class="timeline-item left">Published first book in 2025.</div>
+        <div class="timeline-item right">Recognized as a top influencer in 2030.</div>
+    </section>
+
+    <!-- Achievements -->
+    <section class="achievements">
+        <div class="card">🏆 Award 1 - Best Author</div>
+        <div class="card">📘 5+ Published Books</div>
+        <div class="card">🌍 Global Speaker</div>
+        <div class="card">💡 Inspiring Millions</div>
+    </section>
+
+    <script>
+        // Timeline Animation on Scroll
+        const items = document.querySelectorAll('.timeline-item');
+        const showOnScroll = () => {
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    item.classList.add('show');
+                }
+            });
+        };
+        window.addEventListener('scroll', showOnScroll);
+        showOnScroll();
+    </script>
+
+</body>
+
+</html>
+<style>
+    .hero-btns {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.hero-btns .btn {
+  display: inline-block;
+  padding: 14px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(270deg, #ffcc00, #ff0066, #00c6ff, #ffcc00);
+  background-size: 600% 600%;
+  animation: gradientMove 6s ease infinite;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.hero-btns .btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(255, 204, 0, 1);
+}
+
+/* Click animation */
+.hero-btns .btn:active {
+  transform: scale(0.95);
+}
+
+/* Gradient Animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+</style>

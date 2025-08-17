@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | JSOS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== Global Styles ===== */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 30px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
+        }
+        
+        .btn i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* ===== Animated Hero Section ===== */
+        .story-hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            z-index: -2;
+            transform: skewY(-5deg);
+            transform-origin: top left;
+            animation: bgSlide 20s infinite alternate;
+        }
+        
+        @keyframes bgSlide {
+            0% { transform: skewY(-5deg) translateY(-10%); }
+            100% { transform: skewY(-5deg) translateY(10%); }
+        }
+        
+        .hero-content {
+            color: white;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .floating-students {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeIn 1s forwards 1s;
+        }
+        
+        .student {
+            position: relative;
+            margin: 0 15px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .student:nth-child(1) {
+            height: 70%;
+            animation-delay: 0s;
+        }
+        
+        .student:nth-child(2) {
+            height: 85%;
+            animation-delay: 1s;
+        }
+        
+        .student:nth-child(3) {
+            height: 65%;
+            animation-delay: 2s;
+        }
+        
+        .student img {
+            height: 100%;
+            width: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ===== Story Timeline ===== */
+        .story-timeline {
+            position: relative;
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--secondary);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 40px);
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            left: calc(50% + 40px);
+        }
+        
+        .timeline-year {
+            position: absolute;
+            top: 30px;
+            width: 100px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-year {
+            right: -120px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-year {
+            left: -120px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .timeline-image {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: scale(0.95);
+            transition: transform 0.5s ease;
+        }
+        
+        .timeline-image:hover {
+            transform: scale(1);
+        }
+        
+        .timeline-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== Student Stories ===== */
+        .student-stories {
+            background: var(--light);
+        }
+        
+        .story-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .story-card.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .story-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .story-card:hover .story-image img {
+            transform: scale(1.1);
+        }
+        
+        .story-info {
+            padding: 25px;
+        }
+        
+        .story-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .student-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .story-info p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .floating-students {
+                display: none;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                left: 0 !important;
+                margin-bottom: 60px;
+            }
+            
+            .timeline-year {
+                top: -25px;
+                left: 30px !important;
+                right: auto !important;
+            }
+            
+            .timeline-line {
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Hero Section -->
+    <section class="story-hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Story</h1>
+                <p>Discover how JSOS has transformed lives through education and opportunity. Every student's journey is a testament to the power of community support.</p>
+                <a href="#timeline" class="btn">
+                    Explore Our Journey <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="floating-students">
+            <div class="student">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3" alt="Student">
+            </div>
+            <div class="student">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3" alt="Student">
+            </div>
+            <div class="student">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3" alt="Student">
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Timeline Section -->
+    <section class="story-timeline" id="timeline">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Journey</h2>
+                <p>Key milestones that shaped JSOS</p>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2005</div>
+                        <h3>The Beginning</h3>
+                        <p>Founded in a small community center with just 5 volunteers, JSOS began as an after-school tutoring program for 30 children.</p>
+                        <div class="timeline-image">
+                            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3" alt="JSOS Founding">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2010</div>
+                        <h3>First Expansion</h3>
+                        <p>Opened three new learning centers, reaching over 500 students annually. Launched our scholarship program.</p>
+                        <div class="timeline-image">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3" alt="JSOS Expansion">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015</div>
+                        <h3>National Recognition</h3>
+                        <p>Received the National Education Award for innovative programs. Partnered with 10 local schools.</p>
+                        <div class="timeline-image">
+                            <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3" alt="JSOS Award">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <h3>Digital Transformation</h3>
+                        <p>Launched online learning platform during pandemic, serving 5,000+ students remotely.</p>
+                        <div class="timeline-image">
+                            <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-4.0.3" alt="JSOS Digital">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Stories Section -->
+    <section class="student-stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Success Stories</h2>
+                <p>Meet some of the lives we've transformed</p>
+            </div>
+            
+            <div class="story-cards">
+                <!-- Story 1 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3" alt="Priya's Story">
+                    </div>
+                    <div class="story-info">
+                        <h3>Priya's Medical Dream</h3>
+                        <div class="student-meta">
+                            <span><i class="fas fa-graduation-cap"></i> Medicine</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Mumbai</span>
+                        </div>
+                        <p>From struggling in a government school to pursuing her dream of becoming a doctor through JSOS scholarships.</p>
+                        <a href="#" class="btn">
+                            Read Full Story <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Story 2 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3" alt="Rahul's Story">
+                    </div>
+                    <div class="story-info">
+                        <h3>Rahul's Tech Journey</h3>
+                        <div class="student-meta">
+                            <span><i class="fas fa-laptop-code"></i> Computer Science</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bangalore</span>
+                        </div>
+                        <p>First in his family to attend college, now working at a top tech company after JSOS coding bootcamp.</p>
+                        <a href="#" class="btn">
+                            Read Full Story <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Story 3 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3" alt="Ananya's Story">
+                    </div>
+                    <div class="story-info">
+                        <h3>Ananya's Artistic Path</h3>
+                        <div class="student-meta">
+                            <span><i class="fas fa-paint-brush"></i> Fine Arts</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Delhi</span>
+                        </div>
+                        <p>Discovered her artistic talent through JSOS creative workshops, now exhibiting internationally.</p>
+                        <a href="#" class="btn">
+                            Read Full Story <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animate elements on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Timeline animation
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const storyCards = document.querySelectorAll('.story-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // For timeline items
+                        if (entry.target.classList.contains('timeline-item')) {
+                            setTimeout(() => {
+                                entry.target.classList.add('animate');
+                            }, index * 300);
+                        }
+                        // For story cards
+                        if (entry.target.classList.contains('story-card')) {
+                            setTimeout(() => {
+                                entry.target.classList.add('animate');
+                            }, index * 200);
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => observer.observe(item));
+            storyCards.forEach(card => observer.observe(card));
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
